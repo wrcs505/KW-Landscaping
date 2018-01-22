@@ -1,101 +1,95 @@
-# Boilermaker
+# Wallice Landscaping
 
-*Good things come in pairs*
+Wallice Landscaping is a landscape management company based in the Greenville, South Carolina region. The owner decided he needed to expand his marketing footprint by developing a public-facing website.
 
-Looking to mix up a backend with express/sequelize and a frontend with react/redux? That's `boilermaker`!
+Initially favoring an extremely simple and mostly static build, the owner came to realize that a custom database would be a worthwhile investment. The database would not only allow the public-facing website to offer greater dynamic functionality, but more importantly, could serve as a valuable asset for internal tasks ranging from record-keeping to operational and marketing analysis.
 
-Follow along with the workshop to make your own! This canonical version can serve as a reference, or a starting point all on its own.
+Ultimately, the database will serve as the primary repository for all business data, vastly improve record-keeping workflows, drive and manage inbound lead generation, improve customer satisfaction, and create efficiencies that will allow the company to expand quickly and sustainably.
 
-## Setup
+# The Plan
 
-To use this boilerplate, you'll need to take the following steps:
+After extensive consultations with the owner, the project was conceived and broken down into several phases to ensure a smooth rollout, while minimizing upfront costs.
 
-* Don't fork or clone this repo! Instead, create a new, empty directory on your machine and `git init` (or create an empty repo on Github and clone it to your local machine)
-* Run the following commands:
+* Phase 1:
 
-```
-git remote add boilermaker https://github.com/FullstackAcademy/boilermaker.git
-git fetch boilermaker
-git merge boilermaker/master
-```
+During the initial phase, I worked with the owner to identify a hierarchy of priorities based on a cost-benefit analysis.
 
-Why did we do that? Because every once in a while, `boilermaker` may be updated with additional features or bug fixes, and you can easily get those changes from now on by entering:
+We determined that starting with the database build would be best. The thinking was that we should optimize his existing, internal operations before seeking to add more clients to his workload. Additionally, with tax season looming, there was extra incentive to get his record-keeping in order.
 
-```
-git fetch boilermaker
-git merge boilermaker/master
-```
+* Phase 2:
 
-## Customize
+The initial database build would be hosted locally, with online backups, and the owner would use free, out-of-the-box software to interact with the database. This was done to minimize both upfront development and hosting costs, and because the owner wanted a trial period with the database during which updates to the schema would be minimally burdensome.
 
-Now that you've got the code, follow these steps to get acclimated:
+* Phase 3:
 
-* Update project name and description in `package.json` file
-* `npm install`, or `yarn install` - whatever you're into
-* Create two postgres databases: `boilermaker` and `boilermaker-test` (you can substitute these with the name of your own application - just be sure to go through and change the `package.json` and `server/db/db.js` to refer to the new names)
-  * By default, running `npm test` will use `boilermaker-test`, while regular development uses `boilermaker`
-* Create a file called `secrets.js` in the project root
-  * This file is `.gitignore`'d, and will *only* be required in your *development* environment
-  * Its purpose is to attach the secret env variables that you'll use while developing
-  * However, it's **very** important that you **not** push it to Github! Otherwise, *prying eyes* will find your secret API keys!
-  * It might look like this:
+Once this was rolled out and the owner was comfortable that the schema was an exact fit for his needs, work would begin on a web-based interface for the database. This would be for internal use--that is, both the owner and his staff would be able to interface with the database seamlessly while in the field. This would be hosted on a sub-domain of what would ultimately be the publicly-facing site.
 
-  ```
-    process.env.GOOGLE_CLIENT_ID = 'hush hush'
-    process.env.GOOGLE_CLIENT_SECRET = 'pretty secret'
-    process.env.GOOGLE_CALLBACK = '/auth/google/callback'
-  ```
+At this stage, login ability would be enabled for the owner's internal staff and external contractors. Each group would be given certain rights to view internal data relevant to their responsibilities. For example, staff could see information related to theeir assigned projects and equipment, and an accountant could export a live snapshot of transactional info in the database.
 
-* To use OAuth with Google, complete the step above with a real client ID and client secret from Google
-  * You can get them here: https://console.developers.google.com/apis/credentials
-* Finally, complete the section below to set up your linter
+* Phase 4:
 
-## Linting
+The next step was adding client-facing functionality via email. The internal site would be able to dispatch emails automatically, containing various types of information from the database, directly to clients. This would serve as a trial rollout for the ultimate public-facing site.
 
-Linters are fundamental to any project - they ensure that your code has a consistent style, which is critical to writing readable code.
+Two options were devised: emails could contain styled HTML with the content directly integrated, or contain individualized, private links to specific content hosted on the internal site's sub-domain. For example, clients could be invoiced and remit payment directly.
 
-Boilermaker comes with a working linter (ESLint, with `eslint-config-fullstack`) "out of the box." However, everyone has their own style, so we recommend that you and your team work out yours and stick to it. Any linter rule that you object to can be "turned off" in `.eslintrc.json`. You may also choose an entirely different config if you don't like ours:
+* Phase 5:
 
-* [Standard style guide](https://standardjs.com/)
-* [Airbnb style guide](https://github.com/airbnb/javascript)
-* [Google style guide](https://google.github.io/styleguide/jsguide.html)
+Once the owner was satisfied with the testing of client-facing functionality, work would begin on the main public-facing site. To minimize costs, this would be primarily template-based, as there are many existing, attractive templates for landscape businesses.
 
-## Start
+At this stage, login ability would be further rolled out to existing and prospective clients. Existing clients could see repositories of previous work and billing information, while prospective clients could schedule work.
 
-`npm run start-dev` will make great things happen!
+Click-to-call and dynamic scheduling would be enabled.
 
-If you want to run the server and/or webpack separately, you can also `npm run start-server` and `npm run build-client`.
+* Phase 6:
 
-From there, just follow your bliss.
+After completion of the public-facing site, inbound marketing operations could be developed. After an analysis of existing competitors' online operations, it was determined the primary means of inbound marketing would be targeted PPC campaigns. Two different customer profiles were developed: home-owners, and enterprises like property management companies and real estate developers. The PPC campaigns would be optimized primarily with automated scripts to minimize ongoing management costs.
 
-## Deployment
+# Feature Highlights
 
-Ready to go world wide? Here's a guide to deployment!
+* Via model associations, the database will individually manage all clients, projects, work locations, staff, equipment, payable and receivable invoices relationally. For example:
 
-### Prep
-1. Set up the [Heroku command line tools](https://devcenter.heroku.com/articles/heroku-cli)
-2. `heroku login`
-3. Add a git remote for heroku:
-  - **If you're creating a new app...**
-    1. `heroku create` or `heroku create your-app-name` if you have a name in mind.
-    2. `heroku addons:create heroku-postgresql:hobby-dev` to add ("provision") a postgres database to your heroku dyno
+What equipment is assigned to which staff?
 
-  - **If you already have a Heroku app...**
-    1.  `heroku git:remote your-app-name` You'll need to be a collaborator on the app.
+Which staff are assigned to which projects?
 
-### When you're ready to deploy
+Which recaivable invoices are related to which clients and projects?
 
-1. Make sure that all your work is fully committed and pushed to your master branch on Github.
-2. If you currently have an existing branch called "deploy", delete it now (`git branch -d deploy`). We're going to use a dummy branch with the name "deploy" (see below), so if you have one lying around, the script below will error
-3. `npm run deploy` - this will cause the following commands to happen in order:
-  - `git checkout -b deploy`: checks out a new branch called "deploy". Note that the name "deploy" here isn't magical, but it needs to match the name of the branch we specify when we push to our heroku remote.
-  - `webpack -p`: webpack will run in "production mode"
-  - `git add -f public/bundle.js public/bundle.js.map`: "force" add the otherwise gitignored build files
-  - `git commit --allow-empty -m 'Deploying'`: create a commit, even if nothing changed
-  - `git push --force heroku deploy:master`: push your local "deploy" branch to the "master" branch on heroku
-  - `git checkout master`: return to your master branch
-  - `git branch -D deploy`: remove the deploy branch
+Which payable invoices are related to which projects, materials and equipment?
 
-Now, you should be deployed!
+* Granular record-keeping for tax and legal purposes is extremely important in a cash-intensive service business.
 
-Why do all of these steps? The big reason is because we don't want our production server to be cluttered up with dev dependencies like webpack, but at the same time we don't want our development git-tracking to be cluttered with production build files like bundle.js! By doing these steps, we make sure our development and production environments both stay nice and clean!
+Service providers in the state of South Carolina are responsible for Sales and Use taxes, some of which they originate, and some of which they pass-through. Additionally, claiming all legal write-offs can make a massive difference in the ultimate bottom line.
+
+Keeping track of staff records is also crucial in an industry known for extremely high turnover.
+
+* Analysis of ongoing operations is a crucial, yet frequently overlooked factor. It's in the owner's interest to determine which types of clients and services drive the greatest profitability so that logistical planning and marketing operations can be targeted optimally.
+
+The owner wanted the ability to seamlessly organize content for internal and external consumption. By maintaining a set of detailed internal notes, he would have the ability to add practical context to the data maintained in the database.
+
+Some of the data types chosen for storage and curation include:
+
+What is the average customer lifetime/yearly/monthly value?
+
+What type of client generates the most average billings per invoice/project? Average profit?
+
+What is the average payroll expense per month for a specific staff role?
+
+Which services are most profitable in which months?
+
+Which products are most popular among residents? Enterprises?
+
+Which inbound marketing tactics drive the most conversions? Most profitable conversions?
+
+# Why not Wordpress?
+
+Given the extreme prevalence of Wordpress-based and similar products tailored to small businesses in general and landscapers in particular, why was so much custom functionality worthwhile?
+
+An examination of existing software products determined that they either lacked functionality or necessitated open-ended financial commitments. Further, the possibility that a software vendor could drop support at a future date was extremely concerning. The owner wanted something that he didn't have to license, and that he could rely on indefinitely.
+
+The owner also wanted a highly granular record-keeping interface to encourage proper practices.
+
+# The principals
+
+* The Developer: Based near Greenville, South Carolina, Will Shaw is a web developer and digital marketer specializing in designing holistic solutions for a range of business needs. He's a graduate of Clemson University and Fullstack Academy of Code. Inquiries are welcome.
+
+* The Client: Also based in Greenville, SC, Kevin Wallice is the founder and proprietor of Wallice Landscaping. A graduate of Clemson University in horticulture, he delivers a range of landscaping services to home-owners and enterprises alike.

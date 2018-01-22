@@ -1,4 +1,12 @@
 const User = require('./user')
+const Client = require('./client')
+const Project = require('./project')
+const Invoice = require('./invoice')
+const Equipment = require('./equipment')
+const Staff = require('./staff')
+const Receipt = require('./receipt')
+const Transaction = require('./transaction')
+
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -13,6 +21,79 @@ const User = require('./user')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
-module.exports = {
-  User
+
+
+// Project-Client associations
+// will add getClient/setClient/addClient to Project
+Project.belongsTo(Client, {through: 'ClientProjects'});
+// will add getProject/setProject/addProject/addProjects to Client
+Client.belongsToMany(Project, {through: 'ClientProjects'});
+
+// Client-Invoice associations
+// will add getClient/setClient/addClient to Invoice
+Invoice.belongsTo(Client, {through: 'ClientInvoices'});
+// will add getInvoice/setInvoice/addInvoice/addInvoices to Client
+Client.belongsToMany(Invoice, {through: 'ClientInvoices'});
+
+
+// Project-Equipment associations
+// will add getEquipment/setEquipment/addEquipment to Project
+Project.belongsToMany(Equipment, {through: 'ProjectEquipment'});
+// will add getProject/setProject/addProject/addProjects to Equipment
+Equipment.belongsToMany(Project, {through: 'ProjectEquipment'});
+
+
+// Project-Staff associations
+// will add getProject/setProject/addProject to Staff
+Staff.belongsToMany(Project, {through: 'ProjectStaff'});
+// will add getStaff/setStaff/addStaff to Project
+Project.belongsToMany(Staff, {through: 'ProjectStaff'});
+
+
+// Project-Receipt associations
+// will add getProject/setProject/addProject to Receipt
+Receipt.belongsToMany(Project, {through: 'ProjectReceipts'});
+// will add getReceipt/setReceipt/addReceipt/addReceipts to Project
+Project.belongsToMany(Receipt, {through: 'ProjectReceipts'});
+
+// Project-Invoice associations
+// will add getInvoice/setInvoice/addInvoice to Project
+Project.belongsToMany(Invoice, {through: 'ProjectInvoices'});
+// will add getProject/setProject/addProject/addProjects to Invoice
+Invoice.belongsToMany(Project, {through: 'ProjectInvoices'});
+
+// Equipment-Receipt associations
+// will add getReceipt/setReceipt/addReceipt to Equipment
+Equipment.belongsToMany(Receipt, {through: 'EquipmentReceipts'});
+// will add getEquipment/setEquipment/addEquipment to Receipt
+Receipt.belongsToMany(Equipment, {through: 'EquipmentReceipts'});
+
+// Equipment-Staff associations
+// will add getEquipment/setEquipment/addEquipment to Staff
+Staff.belongsToMany(Equipment, {through: 'StaffEquipment'});
+// will add getStaff/setStaff/addStaff to Equipment
+Equipment.belongsToMany(Staff, {through: 'StaffEquipment'});
+
+// Transaction-Invoice associations
+// will add getInvoice/setInvoice/addInvoice to transaction
+Transaction.belongsTo(Invoice, {through: 'InvoiceTransactions'});
+// will add getTransaction/setTransaction/addTransaction/getTransactions to Invoice
+Invoice.belongsToMany(Transaction, {through: 'InvoiceTransactions'});
+
+// Transaction-Receipt associations
+// will add getReceipt/setReceipt/addReceipt to transaction
+Transaction.belongsTo(Receipt, {through: 'ReceiptTransactions'});
+// will add getTransaction/setTransaction/addTransaction/getTransactions to Receipt
+Receipt.belongsToMany(Transaction, {through: 'ReceiptTransactions'});
+
+
+ module.exports = {
+  User,
+  Equipment,
+  Client,
+  Receipt,
+  Invoice,
+  Project,
+  Staff,
+  Transaction
 }

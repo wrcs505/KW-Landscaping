@@ -1,0 +1,18 @@
+// Outstanding problems:
+
+DATEONLY takes what format? YYYY-MM-DD throws format error
+
+What is wrong with S.ARRAY(S.TEXT/S.STRING)? Both options throw "values.map is not a function"
+
+Should locations and/or dates be individual models to avoid these problems?
+
+What is a more efficient way to seed the associations? ran into callback max of 6
+
+__________
+
+Remaining additions:
+
+Add dynamic functionality for data analysis--average billings per invoice/client/project/month/staff
+
+Account for real-life tax considerations--should receipts separate retail price + sales tax? Sales + Use tax on services and materials provided? Selling physical products with sales tax?
+
