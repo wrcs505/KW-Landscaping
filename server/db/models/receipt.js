@@ -18,11 +18,11 @@ const Receipt = db.define('receipt', {
     }
   },
   dateReceived: {
-    type: Sequelize.TEXT,
+    type: Sequelize.DATE,
     allowNull: false
   },
   dateCleared: {
-    type: Sequelize.TEXT,
+    type: Sequelize.DATE,
   },
   // description is external, notes are internal
   description: {

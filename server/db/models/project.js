@@ -26,15 +26,15 @@ const Project = db.define('project', {
     type: Sequelize.TEXT('long')
   },
   dateStarted: {
-    type: Sequelize.TEXT,
+    type: Sequelize.DATE,
   },
-  datesWorked: {
-    // type: Sequelize.ARRAY(Sequelize.STRING),
-    // defaultValue: []
-    type: Sequelize.TEXT
-  },
+  // datesWorked: {
+  //   // type: Sequelize.ARRAY(Sequelize.STRING),
+  //   // defaultValue: []
+  //   type: Sequelize.DATE
+  // },
   dateCompleted: {
-    type: Sequelize.TEXT,
+    type: Sequelize.DATE,
   },
   recurring: {
     type: Sequelize.BOOLEAN,

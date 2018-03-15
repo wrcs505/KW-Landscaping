@@ -28,11 +28,11 @@ const Staff = db.define('staff', {
     type: Sequelize.STRING
   },
   startDate: {
-    type: Sequelize.TEXT,
+    type: Sequelize.DATE,
     allowNull: false
   },
   endDate: {
-    type: Sequelize.TEXT
+    type: Sequelize.DATE
   },
   role: {
     type: Sequelize.TEXT

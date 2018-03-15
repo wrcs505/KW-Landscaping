@@ -10,6 +10,14 @@ What is a more efficient way to seed the associations? ran into callback max of 
 
 __________
 
+Primary Tasks:
+
+***Build out tests for models***
+
+
+
+__________
+
 Remaining additions:
 
 Add dynamic functionality for data analysis--average billings per invoice/client/project/month/staff

@@ -31,16 +31,23 @@ Client.belongsToMany(Project, {through: 'ClientProjects'});
 
 // Client-Invoice associations
 // will add getClient/setClient/addClient to Invoice
-Invoice.belongsTo(Client, {through: 'ClientInvoices'});
+
+// Invoice.belongsTo(Client, {through: 'ClientInvoices'});
+Client.hasMany(Invoice, {constraints: false})
 // will add getInvoice/setInvoice/addInvoice/addInvoices to Client
-Client.belongsToMany(Invoice, {through: 'ClientInvoices'});
+// Client.belongsToMany(Invoice, {through: 'ClientInvoices'});
 
 
 // Project-Equipment associations
 // will add getEquipment/setEquipment/addEquipment to Project
-Project.belongsToMany(Equipment, {through: 'ProjectEquipment'});
+// Equipment.hasMany(Project)
+// Project.belongsTo(Equipment)
+
+Project.hasMany(Equipment)
+Equipment.belongsTo(Project)
+// Project.belongsToMany(Equipment, {through: 'ProjectEquipment', foreignKey: 'projectId', otherKey: 'equipmentId'});
 // will add getProject/setProject/addProject/addProjects to Equipment
-Equipment.belongsToMany(Project, {through: 'ProjectEquipment'});
+// Equipment.belongsToMany(Project, {through: 'ProjectEquipment'});
 
 
 // Project-Staff associations
