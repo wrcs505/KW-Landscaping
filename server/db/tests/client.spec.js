@@ -116,7 +116,7 @@ describe('Client model', function () {
           })
       });
 
-      it('averages billings for all invoices associated to the client, returning a number', function(){
+      xit('averages billings for all invoices associated to the client, returning a number', function(){
         return Client.avgBillingPerInvoice(client)
           .then(function(avg){
             let testSum = _.sumBy(testInvoices, function(inv) {

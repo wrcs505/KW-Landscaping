@@ -25,9 +25,12 @@ const Transaction = require('./transaction')
 
 // Project-Client associations
 // will add getClient/setClient/addClient to Project
-Project.belongsTo(Client, {through: 'ClientProjects'});
+Project.belongsTo(Client, {constraints: false});
 // will add getProject/setProject/addProject/addProjects to Client
-Client.belongsToMany(Project, {through: 'ClientProjects'});
+Client.hasMany(Project, {constraints: false});
+// console.log('index logger: ', Client.getProject)
+// console.log('index logger: ', Object.keys(Project))
+// console.log('\n index logger: ', Client.getProjects)
 
 // Client-Invoice associations
 // will add getClient/setClient/addClient to Invoice
@@ -36,7 +39,7 @@ Client.belongsToMany(Project, {through: 'ClientProjects'});
 Client.hasMany(Invoice, {constraints: false})
 // will add getInvoice/setInvoice/addInvoice/addInvoices to Client
 // Client.belongsToMany(Invoice, {through: 'ClientInvoices'});
-
+// console.log('index logger: ', Client.get)
 
 // Project-Equipment associations
 // will add getEquipment/setEquipment/addEquipment to Project
@@ -65,9 +68,9 @@ Project.belongsToMany(Receipt, {through: 'ProjectReceipts'});
 
 // Project-Invoice associations
 // will add getInvoice/setInvoice/addInvoice to Project
-Project.belongsToMany(Invoice, {through: 'ProjectInvoices'});
+Project.hasMany(Invoice, {constraints: false});
 // will add getProject/setProject/addProject/addProjects to Invoice
-Invoice.belongsToMany(Project, {through: 'ProjectInvoices'});
+Invoice.belongsTo(Project, {constraints: false});
 
 // Equipment-Receipt associations
 // will add getReceipt/setReceipt/addReceipt to Equipment

@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
+const Invoice = require('./invoice')
+const _ = require('lodash');
 // const Product = require('./product');
 // const Category = require ('./category');
 
@@ -44,9 +46,23 @@ const Project = db.define('project', {
     // defaultValue: []
     type: Sequelize.TEXT
   }
+// }, {
+//   defaultScope: {
+//     include: [Invoice]
+//   }
 });
 
 // total internal project costs to date?
+
+Project.sumProjectInvoices = function(project) {
+  return project.getInvoices()
+    .then(invoices => {
+      let sum = _.sumBy(invoices, function(inv) {
+        return inv.subTotal - inv.discounts
+      })
+      return sum / 100
+    })
+}
 
 
 module.exports = Project;

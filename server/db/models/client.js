@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 const Invoice = require('./invoice')
+const Project = require('./project')
 const _ = require('lodash');
 
 const Client = db.define('client', {
@@ -87,7 +88,8 @@ const Client = db.define('client', {
 })
 
 Client.getInvoices = function(client) {
-  // console.log("client logger: ", client)
+  // console.log("client logger: ", Project.)
+  // console.log('client logger: ', Project.getClient())
   return Invoice.findAll({
     where: {
       clientId: client.id
