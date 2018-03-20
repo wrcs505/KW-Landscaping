@@ -53,6 +53,7 @@ const Project = db.define('project', {
 });
 
 // total internal project costs to date?
+// class methods
 
 Project.sumProjectInvoices = function(project) {
   return project.getInvoices()
@@ -63,6 +64,8 @@ Project.sumProjectInvoices = function(project) {
       return sum / 100
     })
 }
+
+
 
 
 module.exports = Project;

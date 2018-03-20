@@ -72,6 +72,8 @@ Project.hasMany(Invoice, {constraints: false});
 // will add getProject/setProject/addProject/addProjects to Invoice
 Invoice.belongsTo(Project, {constraints: false});
 
+/*
+
 // Equipment-Receipt associations
 // will add getReceipt/setReceipt/addReceipt to Equipment
 Equipment.belongsToMany(Receipt, {through: 'EquipmentReceipts'});
@@ -96,6 +98,7 @@ Transaction.belongsTo(Receipt, {through: 'ReceiptTransactions'});
 // will add getTransaction/setTransaction/addTransaction/getTransactions to Receipt
 Receipt.belongsToMany(Transaction, {through: 'ReceiptTransactions'});
 
+*/
 
  module.exports = {
   User,

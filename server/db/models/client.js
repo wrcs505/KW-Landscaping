@@ -87,9 +87,9 @@ const Client = db.define('client', {
   // }
 })
 
+// class methods
+
 Client.getInvoices = function(client) {
-  // console.log("client logger: ", Project.)
-  // console.log('client logger: ', Project.getClient())
   return Invoice.findAll({
     where: {
       clientId: client.id
@@ -98,7 +98,6 @@ Client.getInvoices = function(client) {
 }
 
 Client.sumInvoices = function(client) {
-  // console.log("client logger: ", client)
   return Invoice.findAll({
     where: {
       clientId: client.id
@@ -121,6 +120,23 @@ Client.avgBillingPerInvoice = function(client) {
       })
     })
     .catch()
+}
+
+Client.avgBillingPerProject = function(client) {
+  return Project.findAll({where: {clientId: client.id}})
+    .then(projects => {
+      return Promise.all(projects.map(project => {
+        return Project.sumProjectInvoices(project)
+          .then(sum => {
+            return sum
+          })
+          .catch(err => err)
+      }))
+    })
+    .then(summedProjects => {
+      return (_.sumBy(summedProjects) / summedProjects.length)
+    })
+    .catch(err => err)
 }
 
 
