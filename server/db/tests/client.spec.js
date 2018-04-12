@@ -95,7 +95,7 @@ describe('Client model', function () {
         .catch(err => console.log("ERROR: ", err))
       })
 
-      it('gets all invoices associated to the client', function(){
+      xit('gets all invoices associated to the client', function(){
         return Client.getInvoices(client)
           .then(function(invoices){
             expect(invoices.length).to.equal(testInvoices.length)
@@ -104,7 +104,7 @@ describe('Client model', function () {
           })
       });
 
-      it('sums all billings for all invoices associated to the client, returning a number', function(){
+      xit('sums all billings for all invoices associated to the client, returning a number', function(){
         return Client.sumInvoices(client)
           .then(function(sum){
             let testSum = _.sumBy(testInvoices, function(inv) {
@@ -116,7 +116,7 @@ describe('Client model', function () {
           })
       });
 
-      it('averages billings for all invoices associated to the client, returning a number', function(){
+      xit('averages billings for all invoices associated to the client, returning a number', function(){
         return Client.avgBillingPerInvoice(client)
           .then(function(avg){
             let testSum = _.sumBy(testInvoices, function(inv) {

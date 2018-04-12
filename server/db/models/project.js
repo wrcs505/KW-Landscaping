@@ -14,19 +14,11 @@ const Project = db.define('project', {
   name: {
     type: Sequelize.TEXT
   },
-  locations: {
-    // type: Sequelize.ARRAY(Sequelize.STRING),
-    // defaultValue: []
-    type: Sequelize.TEXT
-  },
-  // description is external, notes are internal
-  description: {
-    type: Sequelize.TEXT('long'),
-    allowNull: false
-  },
-  notes: {
-    type: Sequelize.TEXT('long')
-  },
+  // locations: {
+  //   // type: Sequelize.ARRAY(Sequelize.STRING),
+  //   // defaultValue: []
+  //   type: Sequelize.TEXT
+  // },
   dateStarted: {
     type: Sequelize.DATE,
   },
@@ -38,14 +30,22 @@ const Project = db.define('project', {
   dateCompleted: {
     type: Sequelize.DATE,
   },
-  recurring: {
-    type: Sequelize.BOOLEAN,
-  },
   media: {
     // type: Sequelize.ARRAY(Sequelize.STRING),
     // defaultValue: []
     type: Sequelize.TEXT
-  }
+  },
+  recurring: {
+    type: Sequelize.BOOLEAN,
+  },
+  // description is external, notes are internal
+  description: {
+    type: Sequelize.TEXT('long'),
+    allowNull: false
+  },
+  notes: {
+    type: Sequelize.TEXT('long')
+  },
 // }, {
 //   defaultScope: {
 //     include: [Invoice]

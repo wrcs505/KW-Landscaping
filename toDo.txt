@@ -24,3 +24,7 @@ Add dynamic functionality for data analysis--average billings per invoice/client
 
 Account for real-life tax considerations--should receipts separate retail price + sales tax? Sales + Use tax on services and materials provided? Selling physical products with sales tax?
 
+G-cal integration for dates/schedules?
+
+
+

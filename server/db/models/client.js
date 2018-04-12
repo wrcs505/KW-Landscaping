@@ -31,12 +31,12 @@ const Client = db.define('client', {
     type: Sequelize.STRING
   },
   // should addresses be broken into individal component fields?
-  billingAddress: {
-    type: Sequelize.STRING
-  },
-  contactAddress: {
-    type: Sequelize.STRING
-  },
+  // billingAddress: {
+  //   type: Sequelize.STRING
+  // },
+  // contactAddress: {
+  //   type: Sequelize.STRING
+  // },
   // implement Twilio validation for phones?
   phone: {
     type: Sequelize.STRING

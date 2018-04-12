@@ -6,6 +6,7 @@ const Equipment = require('./equipment')
 const Staff = require('./staff')
 const Receipt = require('./receipt')
 const Transaction = require('./transaction')
+const Location = require('./location')
 
 
 /**
@@ -55,16 +56,16 @@ Equipment.belongsTo(Project)
 
 // Project-Staff associations
 // will add getProject/setProject/addProject to Staff
-Staff.belongsToMany(Project, {through: 'ProjectStaff'});
-// will add getStaff/setStaff/addStaff to Project
-Project.belongsToMany(Staff, {through: 'ProjectStaff'});
+// Staff.belongsToMany(Project, {through: 'ProjectStaff'});
+// // will add getStaff/setStaff/addStaff to Project
+// Project.belongsToMany(Staff, {through: 'ProjectStaff'});
 
 
 // Project-Receipt associations
 // will add getProject/setProject/addProject to Receipt
-Receipt.belongsToMany(Project, {through: 'ProjectReceipts'});
-// will add getReceipt/setReceipt/addReceipt/addReceipts to Project
-Project.belongsToMany(Receipt, {through: 'ProjectReceipts'});
+// Receipt.belongsToMany(Project, {through: 'ProjectReceipts'});
+// // will add getReceipt/setReceipt/addReceipt/addReceipts to Project
+// Project.belongsToMany(Receipt, {through: 'ProjectReceipts'});
 
 // Project-Invoice associations
 // will add getInvoice/setInvoice/addInvoice to Project
@@ -72,6 +73,17 @@ Project.hasMany(Invoice, {constraints: false});
 // will add getProject/setProject/addProject/addProjects to Invoice
 Invoice.belongsTo(Project, {constraints: false});
 
+// Location-Project associations
+// will add getLocation/setLocation/addLocation to Project
+Project.belongsToMany(Location, {through: 'ProjectLocations'});
+// will add getProject/setProject/addProject/addProjects to Location
+Location.belongsToMany(Project, {through: 'ProjectLocations'})
+
+// Location-Client associations
+// will add getLocation/setLocation/addLocation to Client
+Client.hasMany(Location, {constraints: false});
+// will add getClient/setClient/addClient/addClients to Location
+Location.belongsTo(Client, {constraints: false});
 /*
 
 // Equipment-Receipt associations
@@ -108,5 +120,6 @@ Receipt.belongsToMany(Transaction, {through: 'ReceiptTransactions'});
   Invoice,
   Project,
   Staff,
-  Transaction
+  Transaction,
+  Location
 }

@@ -42,6 +42,9 @@ const Invoice = db.define('invoice', {
   dateCleared: {
     type: Sequelize.TEXT,
   },
+  recurring: {
+    type: Sequelize.BOOLEAN,
+  },
   // description is external, notes are internal
   description: {
     type: Sequelize.TEXT('long'),
@@ -49,9 +52,6 @@ const Invoice = db.define('invoice', {
   },
   notes: {
     type: Sequelize.TEXT('long')
-  },
-  recurring: {
-    type: Sequelize.BOOLEAN,
   },
 });
 
